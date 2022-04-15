@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Todo List by VRT</title>
+        <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                color: #fff;
+            }
+            
+            body {
+            background-image:url("https://fsb.zobj.net/crop.php?r=hy2pSmMXvFI2NME7WLrQKgfYdrlkBZYNPtJpBk9a8V3jm2Yhc9K449-3iPVHDMXB-lPmtOyQ4UnHu-maMZkaJoX8GgDHt40Bn78HCS7qNVMU0PnJqOx4n_--zALVhvWgjAIqyXt5C_Ja3GBL"); 
+                background-position: center top;
+            }
+            
+            .container {
+                width:280px;
+                min-height:400px;
+                margin:30px auto;
+                background-color:rgb(0,0,0,0.7);
+                border-radius:15px;
+            }
+            
+            .header {
+                display:flex;
+                justify-content:space-between;
+                border-bottom:solid 0.1px #fff;
+                padding:12px 18px;
+                align-items:baseline;
+            }
+            
+            .button {
+                width:1.5em;
+                height:1.5em;
+                text-align:center;
+                outline:none;
+            }
+            
+            .button p {
+                font-size:20px;
+                text-align:center;
+            }
+            
+            .todos {
+                padding:0 15px 15px 15px;
+            }
+            
+            .item {
+                display:flex;
+                justify-content:flex-start;
+                border-bottom:0.6px solid #fff;
+                padding:15px 0;
+            }
+            
+            .todos button {
+                margin-right:20px;
+                min-width:1em;
+                height:1em;
+                background-color:rgb(0,0,0,0);
+                border-radius:5px;
+                outline:none;
+                border:solid #fff;
+            }
+            
+            ul {
+                list-style-type:none;
+            }
+        </style>
+        <script>
+$(document).ready(function(){
+    $(".button").click(function(){
+        $(".button").css({"background-color":"rgb(255,255,255,0.5)","border-radius":"50%"})
+        setTimeout(function(){
+            $(".button").css({"background-color":"rgb(255,255,255,0)","border-radius":"50%"}) },70)
+    })
+})
+
+var listItem
+$(document).ready(function(){
+    $(".button").click(function(){
+        setTimeout(function(){
+            listItem = prompt("Add new item to the list.")
+        },100)
+        setTimeout(function(){
+           $(".todos").append("<div class='item'><button class='check'></button><p>" + listItem + "</p></div>");
+        }, 200)      
+    })
+})
+
+$(document).ready(function(){
+    $(document).on("click",".item",(function(){
+        $(this).children("p").css({"text-decoration":"line-through", "color":"#777"});
+        $(this).css("border-bottom","solid #777")
+        $(this).children("button").css("border-color","#777");
+        $(this).fadeOut(1000, function(){
+            $(".first-item").remove()
+        })
+    })) 
+})
+  
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <p>Reminder</p>
+                <div class="button"><p>+</p></div>
+            </div>
+            
+            <div class="todos">
+                <div class="item">
+                    <button></button>
+                    <p>Eat</p>
+                </div>
+                <div class="item">
+                    <button></button>
+                    <p>Drink 3.5 Water</p>
+                </div>
+                <div class="item">
+                    <button></button>
+                    <p>Homework</p>
+                </div>
+                <div class="item">
+                    <button></button>
+                    <p>Watch TV</p>
+                </div>
+                </div>
+            </div>
+        </div>
+        <h1></h1>
+    </body>
+</html>
